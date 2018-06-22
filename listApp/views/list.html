@@ -1,0 +1,23 @@
+  	<div class="content">
+  		<div ng-controller="firstController">
+  			<button ng-click="order = 'name'">Order By Name</button>
+  			<button ng-click="order = 'age'">Order By Age</button>
+  			<input type="text" ng-model="search" placeholder="enter your fav language" />
+			<ul>
+				<li ng-repeat="lang in languages | orderBy: order | filter: search"  ng-show="lang.available" > 
+					<img ng-src="{{lang.img}}" style="margin: -12px 10px 0 0; float: left; width: 50px" alt="">
+					<h3>{{lang.name}} - {{lang.cash | currency: '$' }}</h3>
+					<div class="remove"  ng-click="remove(lang)">x</div>
+					<span class="belt" style="background-color: {{lang.belt}}"> {{lang.belt}}</span>
+				</li>
+			</ul>
+
+			<form ng-submit="addProduct()">
+				<input type="text" placeholder="name" ng-model="new.name" />
+				<input type="text" placeholder="belt" ng-model="new.belt" />
+				<input type="text" placeholder="price" ng-model="new.cash" />
+				<input type="submit" value="add" />
+			</form> 
+  		</div>
+		
+	</div>
